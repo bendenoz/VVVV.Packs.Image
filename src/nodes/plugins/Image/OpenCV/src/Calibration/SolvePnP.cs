@@ -19,6 +19,8 @@ using System.Collections.Generic;
 
 namespace VVVV.Nodes.OpenCV
 {
+    public enum TCoordinateSystem { VVVV, OpenCV };
+
 	#region PluginInfo
 	[PluginInfo(Name = "SolvePnP", Category = "OpenCV", Help = "Find pose of object given camera intrinsics", Tags = "")]
 	#endregion PluginInfo
@@ -34,8 +36,14 @@ namespace VVVV.Nodes.OpenCV
 		[Input("Intrinsics")]
 		ISpread<Intrinsics> FPinInIntrinsics;
 
+        [Input("Coordinates", IsSingle = true)]
+        ISpread<TCoordinateSystem> FPinInCoordSystem;
+
 		[Output("Extrinsics")]
 		ISpread<Extrinsics> FPinOutExtrinsics;
+
+        [Output("View per board")]
+        ISpread<Matrix4x4> FPinOutView;
 
 		[Output("Status")]
 		ISpread<String> FPinOutStatus;
@@ -59,6 +67,9 @@ namespace VVVV.Nodes.OpenCV
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
+
+            bool useVVVVCoords = FPinInCoordSystem[0] == TCoordinateSystem.VVVV;
+
 			SpreadMax = Math.Max(FPinInObject.SliceCount, FPinInImage.SliceCount);
 
 			FPinOutExtrinsics.SliceCount = SpreadMax;
@@ -77,8 +88,14 @@ namespace VVVV.Nodes.OpenCV
 					if (FPinInIntrinsics[i].intrinsics == null)
 						throw new Exception("Waiting for camera calibration intrinsics");
 
-					ExtrinsicCameraParameters extrinsics = CameraCalibration.FindExtrinsicCameraParams2(MatrixUtils.ObjectPoints(FPinInObject[i], true), MatrixUtils.ImagePoints(FPinInImage[i]), FPinInIntrinsics[i].intrinsics);
+                    ExtrinsicCameraParameters extrinsics = CameraCalibration.FindExtrinsicCameraParams2(MatrixUtils.ObjectPoints(FPinInObject[i], useVVVVCoords), MatrixUtils.ImagePoints(FPinInImage[i]), FPinInIntrinsics[i].intrinsics);
 					FPinOutExtrinsics[i] = new Extrinsics(extrinsics);
+
+                    if (useVVVVCoords)
+                        FPinOutView[i] = MatrixUtils.ConvertToVVVV(FPinOutExtrinsics[i].Matrix);
+                    else
+                        FPinOutView[i] = FPinOutExtrinsics[i].Matrix;
+
 					FPinOutStatus[i] = "OK";
 				}
 				catch (Exception e)
