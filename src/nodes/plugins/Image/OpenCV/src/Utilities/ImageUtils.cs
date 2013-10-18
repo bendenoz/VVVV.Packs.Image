@@ -32,7 +32,7 @@ namespace VVVV.Nodes.OpenCV
 						switch (dst)
 						{
 							case TColorFormat.RGBA8:
-								return COLOR_CONVERSION.CV_GRAY2RGBA;
+								return COLOR_CONVERSION.GRAY2RGBA;
 						}
 						break;
 					}
@@ -42,10 +42,10 @@ namespace VVVV.Nodes.OpenCV
 						switch (dst)
 						{
 							case TColorFormat.L8:
-								return COLOR_CONVERSION.CV_RGB2GRAY;
+								return COLOR_CONVERSION.RGB2GRAY;
 
 							case TColorFormat.RGBA8:
-								return COLOR_CONVERSION.CV_RGB2RGBA;
+								return COLOR_CONVERSION.RGB2RGBA;
 						}
 						break;
 					}
@@ -54,7 +54,7 @@ namespace VVVV.Nodes.OpenCV
 						switch (dst)
 						{
 							case TColorFormat.L8:
-								return COLOR_CONVERSION.CV_RGBA2GRAY;
+								return COLOR_CONVERSION.RGBA2GRAY;
 						}
 						break;
 					}
@@ -64,16 +64,16 @@ namespace VVVV.Nodes.OpenCV
 						switch (dst)
 						{
 							case TColorFormat.L32F:
-								return COLOR_CONVERSION.CV_RGBA2GRAY;
+								return COLOR_CONVERSION.RGBA2GRAY;
 
 							case TColorFormat.RGBA32F:
-								return COLOR_CONVERSION.CV_RGB2RGBA;
+								return COLOR_CONVERSION.RGB2RGBA;
 						}
 						break;
 					}
 			}
 
-			return COLOR_CONVERSION.CV_COLORCVT_MAX;
+			return COLOR_CONVERSION.COLORCVT_MAX;
 		}
 
 		public static IImage CreateImage(int width, int height, TColorFormat format)
@@ -391,7 +391,7 @@ namespace VVVV.Nodes.OpenCV
 
 			COLOR_CONVERSION route = ConvertRoute(source.NativeFormat, target.NativeFormat);
 
-			if (route == COLOR_CONVERSION.CV_COLORCVT_MAX)
+			if (route == COLOR_CONVERSION.COLORCVT_MAX)
 			{
 				CvInvoke.cvConvert(source.CvMat, target.CvMat);
 			} else {
