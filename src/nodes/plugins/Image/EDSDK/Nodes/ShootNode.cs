@@ -30,11 +30,13 @@ namespace VVVV.Nodes.EDSDK.Nodes
 		[Output("Status")]
 		ISpread<string> FOutStatus;
 
+		bool FFirstRun = true;
+
 		public void Evaluate(int SpreadMax)
 		{
 			FOutStatus.SliceCount = SpreadMax;
 
-			if (FInSaveOnCamera.IsChanged || FInSaveOnComputer.IsChanged || FInSaveLocation.IsChanged)
+			if (FInDevices.IsChanged || FInSaveOnCamera.IsChanged || FInSaveOnComputer.IsChanged || FInSaveLocation.IsChanged)
 			{
 				for (int i = 0; i < SpreadMax; i++)
 				{
@@ -50,8 +52,8 @@ namespace VVVV.Nodes.EDSDK.Nodes
 							camera.SavePicturesToCamera();
 						else if (FInSaveOnComputer[i])
 							camera.SavePicturesToHost(FInSaveLocation[i]);
-						else
-							throw(new Exception("You must choose to save to either camera or computer"));
+						else if (FInSaveOnCamera.IsChanged || FInSaveOnComputer.IsChanged && FFirstRun)
+							throw(new Exception("Canon.Eos.Framework doesn't support turning off save pictures to camera or comptuer if you've set this flag previously unless the camera is reset. For the remainder of this session you will need to select either to save to the camera or the computer"));
 
 						FOutStatus[i] = "OK";
 					}
@@ -79,6 +81,8 @@ namespace VVVV.Nodes.EDSDK.Nodes
 					FOutStatus[i] = e.Message;
 				}
 			}
+
+			FFirstRun = false;
 		}
 	}
 }
