@@ -39,6 +39,9 @@ namespace VVVV.Nodes.OpenCV
         [Input("Coordinates", IsSingle = true)]
         ISpread<TCoordinateSystem> FPinInCoordSystem;
 
+        [Input("Do", IsBang = true, IsSingle = true)]
+        ISpread<bool> FPinInDo;
+
 		[Output("Extrinsics")]
 		ISpread<Extrinsics> FPinOutExtrinsics;
 
@@ -56,7 +59,6 @@ namespace VVVV.Nodes.OpenCV
 		[ImportingConstructor]
 		public SolvePnPNode(IPluginHost host)
 		{
-
 		}
 
 		public void Dispose()
@@ -68,41 +70,45 @@ namespace VVVV.Nodes.OpenCV
 		public void Evaluate(int SpreadMax)
 		{
 
-            bool useVVVVCoords = FPinInCoordSystem[0] == TCoordinateSystem.VVVV;
-
-			SpreadMax = Math.Max(FPinInObject.SliceCount, FPinInImage.SliceCount);
-
-			FPinOutExtrinsics.SliceCount = SpreadMax;
-			FPinOutStatus.SliceCount = SpreadMax;
-
-			for (int i = 0; i < SpreadMax; i++)
+            if (FPinInDo[0])
 			{
-				try
-				{
-					if (FPinInObject[i].SliceCount == 0 || FPinInImage[i].SliceCount == 0)
-						throw new Exception("No datapoints");
-					if (FPinInImage[i].SliceCount == 1)
-						throw new Exception("Only 1 image point is being input per board, check SliceCount!");
-					if (FPinInObject[i].SliceCount == 1)
-						throw new Exception("Only 1 object point is being input per board, check SliceCount!");
-					if (FPinInIntrinsics[i].intrinsics == null)
-						throw new Exception("Waiting for camera calibration intrinsics");
+                bool useVVVVCoords = FPinInCoordSystem[0] == TCoordinateSystem.VVVV;
 
-                    ExtrinsicCameraParameters extrinsics = CameraCalibration.FindExtrinsicCameraParams2(MatrixUtils.ObjectPoints(FPinInObject[i], useVVVVCoords), MatrixUtils.ImagePoints(FPinInImage[i]), FPinInIntrinsics[i].intrinsics);
-					FPinOutExtrinsics[i] = new Extrinsics(extrinsics);
+			    SpreadMax = Math.Max(FPinInObject.SliceCount, FPinInImage.SliceCount);
 
-                    if (useVVVVCoords)
-                        FPinOutView[i] = MatrixUtils.ConvertToVVVV(FPinOutExtrinsics[i].Matrix);
-                    else
-                        FPinOutView[i] = FPinOutExtrinsics[i].Matrix;
+			    FPinOutExtrinsics.SliceCount = SpreadMax;
+			    FPinOutStatus.SliceCount = SpreadMax;
 
-					FPinOutStatus[i] = "OK";
-				}
-				catch (Exception e)
-				{
-					FPinOutStatus[i] = e.Message;
-				}
-				
+                for (int i = 0; i < SpreadMax; i++)
+                {
+                    try
+                    {
+                        if (FPinInObject[i].SliceCount == 0 || FPinInImage[i].SliceCount == 0)
+                            throw new Exception("No datapoints");
+                        if (FPinInImage[i].SliceCount == 1)
+                            throw new Exception("Only 1 image point is being input per board, check SliceCount!");
+                        if (FPinInObject[i].SliceCount == 1)
+                            throw new Exception("Only 1 object point is being input per board, check SliceCount!");
+                        if (FPinInIntrinsics[i].intrinsics == null)
+                            throw new Exception("Waiting for camera calibration intrinsics");
+
+                        // FLogger.Log(LogType.Debug, "i = {0}", i);
+
+                        ExtrinsicCameraParameters extrinsics = CameraCalibration.FindExtrinsicCameraParams2(MatrixUtils.ObjectPoints(FPinInObject[i], useVVVVCoords), MatrixUtils.ImagePoints(FPinInImage[i]), FPinInIntrinsics[i].intrinsics);
+                        FPinOutExtrinsics[i] = new Extrinsics(extrinsics);
+
+                        if (useVVVVCoords)
+                            FPinOutView[i] = MatrixUtils.ConvertToVVVV(FPinOutExtrinsics[i].Matrix);
+                        else
+                            FPinOutView[i] = FPinOutExtrinsics[i].Matrix;
+
+                        FPinOutStatus[i] = "OK";
+                    }
+                    catch (Exception e)
+                    {
+                        FPinOutStatus[i] = e.Message;
+                    }
+                }
 			}
 		}
 	}

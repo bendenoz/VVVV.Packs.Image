@@ -40,7 +40,7 @@
       <HintPath>Dependencies\EmguCV\Emgu.Util.dll</HintPath>
     </Reference>
     <Reference Include="FeralTic">
-      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31_x86\packs\DX11\core\FeralTic.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\packs\DX11\core\FeralTic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="SlimDX">
@@ -64,11 +64,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.DX11.Core">
-      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31_x86\packs\DX11\core\VVVV.DX11.Core.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\packs\DX11\core\VVVV.DX11.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.DX11.Lib">
-      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31_x86\packs\DX11\core\VVVV.DX11.Lib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\packs\DX11\core\VVVV.DX11.Lib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.Hosting">
@@ -99,13 +99,16 @@
     <Compile Include="src\Calibration\Extrinsics.cs" />
     <Compile Include="src\Calibration\Homography.cs" />
     <Compile Include="src\Calibration\Intrinsics.cs" />
+    <Compile Include="src\Calibration\IntrinsicsJoinNode.cs" />
     <Compile Include="src\Calibration\IntrinsicsReader.cs" />
+    <Compile Include="src\Calibration\IntrinsicsSplitNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="src\Calibration\IntrinsicsWriter.cs" />
     <Compile Include="src\Calibration\StereoCalibrate.cs" />
     <Compile Include="src\Calibration\ExtrinsicsSplitNode.cs" />
     <Compile Include="src\Calibration\FindBoardInstance.cs" />
     <Compile Include="src\Calibration\FindBoardNode.cs" />
-    <Compile Include="src\Calibration\IntrinsicsSplitNode.cs" />
     <Compile Include="src\Calibration\ProjectPointsNode.cs" />
     <None Include="src\Incomplete\GenericFilterNode.cs" />
     <None Include="src\Features\Stitch.cs" />
