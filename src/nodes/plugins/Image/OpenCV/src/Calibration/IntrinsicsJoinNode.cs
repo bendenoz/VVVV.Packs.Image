@@ -73,7 +73,12 @@ namespace VVVV.Nodes.OpenCV
 				for (int i = 0; i < SpreadMax; i++)
 				{
                     IntrinsicCameraParameters cp = new IntrinsicCameraParameters();
-                    cp.IntrinsicMatrix[0,0] = 1;
+                    // Inspiration / details from http://strawlab.org/2011/11/05/augmented-reality-with-OpenGL/ - See Intrinsics.cs too
+                    cp.IntrinsicMatrix[0, 0] = FPinInCameraTransform[i][0, 0] * FPinInSensorSize[i].x / 2;// =L15*P8/2
+                    cp.IntrinsicMatrix[1, 1] = FPinInCameraTransform[i][1, 1] * FPinInSensorSize[i].y / 2;// =L15*P8/2
+                    cp.IntrinsicMatrix[0, 2] = (FPinInCameraTransform[i][2, 0] + 1)* FPinInSensorSize[i].x / 2;// =L15*P8/2
+                    cp.IntrinsicMatrix[1, 2] = (FPinInCameraTransform[i][2, 1] +1) * FPinInSensorSize[i].y / 2;// =L15*P8/2
+                    cp.IntrinsicMatrix[2, 2] = 1;
                     FPinOutIntrinsics[i] = new Intrinsics(cp, new Size((int)FPinInSensorSize[i].x, (int)FPinInSensorSize[i].y));
 				}
 			}
