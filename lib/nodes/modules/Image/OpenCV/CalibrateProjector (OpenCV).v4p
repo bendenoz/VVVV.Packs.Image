@@ -1,6 +1,6 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45alpha31.dtd" >
-   <PATCH nodename="C:\vvvv-sdk\vvvv45\VVVV.Packs.Image\lib\nodes\modules\Image\OpenCV\CalibrateProjector (OpenCV).v4p" filename="C:\kimchiandchips\VVVV.Research\VVVV.Nodes.EmguCV\Build\Modules\CalibrateProjector (EmguCV).v4p" systemname="CalibrateProjector (EmguCV)">
-   <BOUNDS height="8430" left="2280" top="9615" type="Window" width="16320">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta31.2.dtd" >
+   <PATCH nodename="C:\Users\Benjamin\Documents\PROD\vvvv\vvvv-sdk\vvvv45\VVVV.Packs.Image\lib\nodes\modules\Image\OpenCV\CalibrateProjector (OpenCV).v4p" filename="C:\kimchiandchips\VVVV.Research\VVVV.Nodes.EmguCV\Build\Modules\CalibrateProjector (EmguCV).v4p" systemname="CalibrateProjector (EmguCV)">
+   <BOUNDS height="8430" left="7365" top="1950" type="Window" width="16320">
    </BOUNDS>
    <NODE componentmode="InABox" id="18" nodename="IOBox (Value Advanced)" systemname="IOBox (Value Advanced)">
    <BOUNDS height="0" left="6270" top="1050" type="Node" width="0">
@@ -435,13 +435,13 @@
    <LINK srcnodeid="40" srcpinname="Y Output Value" dstnodeid="47" dstpinname="Far">
    </LINK>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="48" systemname="IOBox (Enumerations)">
-   <BOUNDS type="Node" left="9015" top="780" width="0" height="0">
+   <BOUNDS type="Node" left="9015" top="465" width="0" height="0">
    </BOUNDS>
-   <BOUNDS type="Box" left="9015" top="780" width="2580" height="1620">
+   <BOUNDS type="Box" left="9015" top="465" width="2580" height="1665">
    </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="8" values="CV_CALIB_USE_INTRINSIC_GUESS,CV_CALIB_FIX_K1,CV_CALIB_FIX_K2,CV_CALIB_FIX_K3,CV_CALIB_FIX_K4,CV_CALIB_FIX_K5,CV_CALIB_FIX_K6,CV_CALIB_ZERO_TANGENT_DIST">
+   <PIN pinname="Input Enum" slicecount="9" values="CV_CALIB_USE_INTRINSIC_GUESS,CV_CALIB_FIX_K1,CV_CALIB_FIX_K2,CV_CALIB_FIX_K3,CV_CALIB_FIX_K4,CV_CALIB_FIX_K5,CV_CALIB_FIX_K6,CV_CALIB_ZERO_TANGENT_DIST,CV_CALIB_FIX_ASPECT_RATIO">
    </PIN>
-   <PIN pinname="Rows" slicecount="1" values="8">
+   <PIN pinname="Rows" slicecount="1" values="9">
    </PIN>
    <PIN pinname="SliceCount Mode" slicecount="1" values="ColsRowsPages">
    </PIN>
@@ -545,9 +545,9 @@
    <LINK srcnodeid="55" srcpinname="Output Enum" dstnodeid="19" dstpinname="Coordinates">
    </LINK>
    <LINK srcnodeid="48" srcpinname="Output Enum" dstnodeid="19" dstpinname="Flags" linkstyle="VHV">
-   <LINKPOINT x="9015" y="2693">
+   <LINKPOINT x="9015" y="2483">
    </LINKPOINT>
-   <LINKPOINT x="6330" y="2693">
+   <LINKPOINT x="6330" y="2588">
    </LINKPOINT>
    </LINK>
    <NODE systemname="Multiply (Transform)" nodename="Multiply (Transform)" componentmode="Hidden" id="60">
@@ -609,5 +609,17 @@
    </LINKPOINT>
    <LINKPOINT x="5820" y="3743">
    </LINKPOINT>
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="64" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="8100" top="2100" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="8100" top="2100" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Node" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Guess">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="64" srcpinname="Output Node" dstnodeid="19" dstpinname="Intrinsic Guess">
    </LINK>
    </PATCH>
