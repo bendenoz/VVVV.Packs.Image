@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta31.2.dtd" >
-   <PATCH nodename="C:\Users\Benjamin\Documents\PROD\vvvv\vvvv-sdk\vvvv45\VVVV.Packs.Image\lib\nodes\modules\Image\OpenCV\SolvePnP (OpenCV).v4p" filename="C:\Users\Benjamin\Documents\PROD\vvvv\vvvv-sdk\vvvv45\VVVV.Packs.Image\lib\nodes\modules\Image\OpenCV\SolvePNP (OpenCV).v4p" systemname="SolvePNP (OpenCV)">
+   <PATCH nodename="C:\Users\Benjamin\Documents\PROD\vvvv\vvvv-sdk\vvvv45\VVVV.Packs.Image\nodes\modules\Image\OpenCV\SolvePnP (CV.Transform).v4p" filename="C:\Users\Benjamin\Documents\PROD\vvvv\vvvv-sdk\vvvv45\VVVV.Packs.Image\lib\nodes\modules\Image\OpenCV\SolvePNP (OpenCV).v4p" systemname="SolvePNP (OpenCV)">
    <BOUNDS height="8430" left="23760" top="-4185" type="Window" width="16965">
    </BOUNDS>
    <NODE componentmode="InABox" id="18" nodename="IOBox (Value Advanced)" systemname="IOBox (Value Advanced)">
@@ -57,7 +57,7 @@
    </PIN>
    <PIN encoded="0" pinname="Descriptive Name" slicecount="1" values="Status">
    </PIN>
-   <PIN pinname="Input String" visible="1">
+   <PIN pinname="Input String" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
    <NODE componentmode="InABox" id="3" nodename="IOBox (Node)" systemname="IOBox (Node)">
@@ -243,7 +243,7 @@
    <NODE systemname="Multiply (Transform)" nodename="Multiply (Transform)" componentmode="Hidden" id="60">
    <BOUNDS type="Node" left="810" top="4635" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Transform In 1" visible="1">
+   <PIN pinname="Transform In 1" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
@@ -290,7 +290,27 @@
    </NODE>
    <LINK srcnodeid="63" srcpinname="Y Output Value" dstnodeid="61" dstpinname="XYZ">
    </LINK>
-   <NODE systemname="SolvePnP (OpenCV)" filename="..\..\..\plugins\VVVV.Nodes.OpenCV.dll" nodename="SolvePnP (OpenCV)" componentmode="Hidden" id="65">
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="66" systemname="IOBox (Enumerations)">
+   <BOUNDS type="Box" left="9090" top="3135" width="1590" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9090" top="3135" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" values="VVVV">
+   </PIN>
+   </NODE>
+   <NODE id="64" nodename="IOBox (Node)" componentmode="InABox" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="8040" top="630" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="8040" top="630" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Node" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Projection Transform|">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE id="65" systemname="SolvePnP (CV.Transform)" filename="..\..\..\plugins\VVVV.Nodes.OpenCV.dll" nodename="SolvePnP (CV.Transform)" componentmode="Hidden">
    <BOUNDS type="Node" left="2070" top="3705" width="8475" height="270">
    </BOUNDS>
    <PIN pinname="Image PointsXY" visible="1">
@@ -306,37 +326,19 @@
    <PIN pinname="View per board" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="54" srcpinname="Output" dstnodeid="65" dstpinname="Image PointsXY">
-   </LINK>
-   <LINK srcnodeid="1" srcpinname="Y Output Value" dstnodeid="65" dstpinname="Object PointsXYZ">
-   </LINK>
-   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="66" systemname="IOBox (Enumerations)">
-   <BOUNDS type="Box" left="9090" top="3135" width="1590" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="9090" top="3135" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="1" values="VVVV">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="66" srcpinname="Output Enum" dstnodeid="65" dstpinname="Coordinates">
-   </LINK>
-   <LINK srcnodeid="10" srcpinname="Y Output Value" dstnodeid="65" dstpinname="Do">
+   <LINK srcnodeid="65" srcpinname="View per board" dstnodeid="60" dstpinname="Transform In 1">
    </LINK>
    <LINK srcnodeid="65" srcpinname="Status" dstnodeid="8" dstpinname="Input String">
    </LINK>
-   <NODE id="64" nodename="IOBox (Node)" componentmode="InABox" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="8040" top="630" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="8040" top="630" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input Node" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="|Projection Transform|">
-   </PIN>
-   <PIN pinname="Output Node" visible="1">
-   </PIN>
-   </NODE>
-   <NODE systemname="Intrinsics (OpenCV Join)" filename="..\..\..\plugins\VVVV.Nodes.OpenCV.dll" nodename="Intrinsics (OpenCV Join)" componentmode="Hidden" id="67">
+   <LINK srcnodeid="10" srcpinname="Y Output Value" dstnodeid="65" dstpinname="Do">
+   </LINK>
+   <LINK srcnodeid="66" srcpinname="Output Enum" dstnodeid="65" dstpinname="Coordinates">
+   </LINK>
+   <LINK srcnodeid="1" srcpinname="Y Output Value" dstnodeid="65" dstpinname="Object PointsXYZ">
+   </LINK>
+   <LINK srcnodeid="54" srcpinname="Output" dstnodeid="65" dstpinname="Image PointsXY">
+   </LINK>
+   <NODE systemname="Intrinsics (CV.Transform Join)" filename="..\..\..\plugins\VVVV.Nodes.OpenCV.dll" nodename="Intrinsics (CV.Transform Join)" componentmode="Hidden" id="67">
    <BOUNDS type="Node" left="7320" top="1410" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Sensor SizeXY" visible="1">
@@ -351,7 +353,5 @@
    <LINK srcnodeid="64" srcpinname="Output Node" dstnodeid="67" dstpinname="VVVV Projection Transform">
    </LINK>
    <LINK srcnodeid="67" srcpinname="Intrinsics" dstnodeid="65" dstpinname="Intrinsics">
-   </LINK>
-   <LINK srcnodeid="65" srcpinname="View per board" dstnodeid="60" dstpinname="Transform In 1">
    </LINK>
    </PATCH>
