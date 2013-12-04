@@ -17,11 +17,11 @@ using System.Collections.Generic;
 
 #endregion usings
 
-namespace VVVV.Nodes.OpenCV
+namespace VVVV.CV.Nodes
 {
 
 	#region PluginInfo
-	[PluginInfo(Name = "Intrinsics", Category = "OpenCV", Version="Split", Help = "Split intrinsics out", Tags = "")]
+	[PluginInfo(Name = "Intrinsics", Category = "CV.Transform", Version="Split", Help = "Split intrinsics out", Tags = "")]
 	#endregion PluginInfo
 	public class IntrinsicsSplitNode : IPluginEvaluate, IDisposable
 	{

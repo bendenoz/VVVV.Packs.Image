@@ -14,13 +14,14 @@ using Emgu.CV.Structure;
 using Emgu.CV.CvEnum;
 using ThreadState = System.Threading.ThreadState;
 using System.Collections.Generic;
+using VVVV.CV.Core;
 
 #endregion usings
 
-namespace VVVV.Nodes.OpenCV
+namespace VVVV.CV.Nodes
 {
 	#region PluginInfo
-	[PluginInfo(Name = "FindBoard", Category = "OpenCV", Help = "Finds chessboard corners XY", Tags = "")]
+	[PluginInfo(Name = "FindBoard", Category = "CV.Image", Help = "Finds chessboard corners XY", Tags = "camera calibration")]
 	#endregion PluginInfo
 	public class FindBoardNode : IDestinationNode<FindBoardInstance>
 	{

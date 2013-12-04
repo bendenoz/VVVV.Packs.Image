@@ -7,8 +7,9 @@ using System.ComponentModel.Composition;
 using System;
 using System.IO;
 using System.Drawing;
+using VVVV.CV.Core;
 
-namespace VVVV.Nodes.OpenCV
+namespace VVVV.CV.Nodes
 {
 	public class AsImageRawInstance : IStaticGeneratorInstance
 	{
@@ -106,7 +107,7 @@ namespace VVVV.Nodes.OpenCV
 	}
 
 	#region PluginInfo
-	[PluginInfo(Name = "AsImage", Category = "OpenCV", Version = "Raw", Help = "Loads Raw stream into image", Tags = "")]
+	[PluginInfo(Name = "AsImage", Category = "CV.Image", Version = "Raw", Help = "Loads Raw stream into image", Tags = "")]
 	#endregion PluginInfo
 	public class AsImageRawNode : IGeneratorNode<AsImageRawInstance>
 	{

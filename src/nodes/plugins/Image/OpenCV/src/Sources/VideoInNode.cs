@@ -12,10 +12,11 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using VVVV.CV.Core;
 
 #endregion usings
 
-namespace VVVV.Nodes.OpenCV
+namespace VVVV.CV.Nodes
 {
 	public class CaptureVideoInstance : IGeneratorInstance
 	{
@@ -135,8 +136,8 @@ namespace VVVV.Nodes.OpenCV
 
 	#region PluginInfo
 	[PluginInfo(Name = "VideoIn",
-			  Category = "OpenCV",
-			  Version = "",
+			  Category = "CV.Image",
+			  Version = "VfW",
 			  Help = "Captures from DShow device to IPLImage",
 			  Tags = "")]
 	#endregion PluginInfo

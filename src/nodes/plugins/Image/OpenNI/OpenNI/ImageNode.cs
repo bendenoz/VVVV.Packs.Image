@@ -15,8 +15,9 @@ using System.Collections.Generic;
 using OpenNI;
 using System.Runtime.InteropServices;
 
-using VVVV.Nodes.OpenCV;
+using VVVV.CV.Core;
 using System.Diagnostics;
+using VVVV.CV.Core;
 
 #endregion usings
 
@@ -25,7 +26,7 @@ namespace VVVV.Nodes.OpenCV.OpenNI
 	enum ImageNodeMode { RGB, IR };
 
 	#region PluginInfo
-	[PluginInfo(Name = "Images", Category = "OpenCV", Version = "OpenNI", Help = "OpenNI Image generator", Tags = "")]
+	[PluginInfo(Name = "Images", Category = "CV.Image", Version = "OpenNI", Help = "OpenNI Image generator", Tags = "")]
 	#endregion PluginInfo
 	public class ImageNode : IPluginEvaluate, IDisposable
 	{
