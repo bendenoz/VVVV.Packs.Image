@@ -17,11 +17,11 @@ using System.Collections.Generic;
 
 #endregion usings
 
-namespace VVVV.Nodes.OpenCV
+namespace VVVV.CV.Nodes
 {
 
 	#region PluginInfo
-	[PluginInfo(Name = "Intrinsics", Category = "OpenCV", Version="Join", Help = "Join intrinsics params", Tags = "")]
+	[PluginInfo(Name = "Intrinsics", Category = "CV.Transform", Version = "Join", Help = "Join intrinsics params", Tags = "")]
 	#endregion PluginInfo
 	public class IntrinsicsJoinNode : IPluginEvaluate, IDisposable
 	{

@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
   <Import Project="..\packages\VVVV.SlimDX.1.0.1\build\net40\VVVV.SlimDX.props" Condition="Exists('..\packages\VVVV.SlimDX.1.0.1\build\net40\VVVV.SlimDX.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="Default.Core.Project.settings" />
@@ -44,9 +50,12 @@
     <Reference Include="Emgu.Util">
       <HintPath>..\nodes\plugins\Image\OpenCV\Dependencies\EmguCV\Emgu.Util.dll</HintPath>
     </Reference>
+    <Reference Include="SlimDX">
+      <HintPath>..\..\..\..\..\vvvv_45beta31.2_x86\lib\core\SlimDX.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition.CodePlex">
-      <HintPath>..\packages\VVVV.System.ComponentModel.Composition.Codeplex.2.5.0\lib\net40\System.ComponentModel.Composition.CodePlex.dll</HintPath>
+      <HintPath>..\..\..\..\..\vvvv_45beta31.2_x86\lib\core\System.ComponentModel.Composition.Codeplex.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Core" />
@@ -57,15 +66,18 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="VVVV.Core">
-      <HintPath>..\packages\VVVV.Core.31.3.2-develop-35\lib\net40\VVVV.Core.dll</HintPath>
+      <HintPath>..\..\..\..\..\vvvv_45beta31.2_x86\lib\core\VVVV.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="VVVV.PluginInterfaces">
+      <HintPath>..\..\..\..\..\vvvv_45beta31.2_x86\lib\core\VVVV.PluginInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="VVVV.Utils">
-      <HintPath>..\packages\VVVV.Utils.31.3.2-develop-35\lib\net40\VVVV.Utils.dll</HintPath>
+      <HintPath>..\..\..\..\..\vvvv_45beta31.2_x86\lib\core\VVVV.Utils.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.UtilsIL">
-      <HintPath>..\packages\VVVV.UtilsIL.31.3.2-develop-35\lib\net40\VVVV.UtilsIL.dll</HintPath>
+      <HintPath>..\..\..\..\..\vvvv_45beta31.2_x86\lib\core\VVVV.UtilsIL.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

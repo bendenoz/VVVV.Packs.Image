@@ -52,12 +52,15 @@
     </Reference>
     <Reference Include="FeralTic, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\DX11\core\FeralTic.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\packs\DX11\core\FeralTic.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="SlimDX">
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\lib\core\SlimDX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition.CodePlex, Version=4.1.2.0, Culture=neutral, PublicKeyToken=13e5ffd4e05db186, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\VVVV.System.ComponentModel.Composition.Codeplex.2.5.0\lib\net40\System.ComponentModel.Composition.CodePlex.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\lib\core\System.ComponentModel.Composition.Codeplex.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Core" />
@@ -67,26 +70,37 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="VVVV.Core, Version=31.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\VVVV.Core.31.3.2-develop-35\lib\net40\VVVV.Core.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="VVVV.Core">
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\lib\core\VVVV.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="VVVV.CV.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\core\VVVV.CV.Core.dll</HintPath>
     </Reference>
     <Reference Include="VVVV.DX11.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\DX11\core\VVVV.DX11.Core.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\packs\DX11\core\VVVV.DX11.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.DX11.Lib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\DX11\core\VVVV.DX11.Lib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\packs\DX11\core\VVVV.DX11.Lib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VVVV.Nodes">
-      <HintPath>..\..\..\..\..\..\..\lib\nodes\plugins\VVVV.Nodes.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\lib\nodes\plugins\VVVV.Nodes.dll</HintPath>
     </Reference>
-    <Reference Include="VVVV.Utils, Version=31.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\VVVV.Utils.31.3.2-develop-35\lib\net40\VVVV.Utils.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="VVVV.PluginInterfaces">
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\lib\core\VVVV.PluginInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="VVVV.Utils">
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\lib\core\VVVV.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="VVVV.Utils3rdParty">
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\lib\core\VVVV.Utils3rdParty.dll</HintPath>
+    </Reference>
+    <Reference Include="VVVV.UtilsIL">
+      <HintPath>..\..\..\..\..\..\..\..\vvvv_45beta31.2_x86\lib\core\VVVV.UtilsIL.dll</HintPath>
     </Reference>
     <Reference Include="ZedGraph">
       <HintPath>Dependencies\EmguCV\ZedGraph.dll</HintPath>
@@ -99,6 +113,7 @@
     <Compile Include="src\Calibration\Extrinsics.cs" />
     <Compile Include="src\Calibration\Homography.cs" />
     <Compile Include="src\Calibration\Intrinsics.cs" />
+    <Compile Include="src\Calibration\IntrinsicsJoinNode.cs" />
     <Compile Include="src\Calibration\IntrinsicsReader.cs" />
     <Compile Include="src\Calibration\IntrinsicsWriter.cs" />
     <Compile Include="src\Calibration\StereoCalibrate.cs" />
@@ -191,138 +206,48 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dependencies\OpenCV\x64\cublas64_50_35.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\cudart64_50_35.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\cufft64_50_35.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\cvextern.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\npp64_50_35.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_calib3d249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_contrib249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_core249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_features2d249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_ffmpeg249_64.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_flann249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_gpu249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_highgui249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_imgproc249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_legacy249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_ml249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_nonfree249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_objdetect249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_photo249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_stitching249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_video249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x64\opencv_videostab249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\cublas32_50_35.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\cudart32_50_35.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\cufft32_50_35.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\cvextern.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\npp32_50_35.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_calib3d249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_contrib249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_core249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_features2d249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_ffmpeg249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_flann249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_gpu249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_highgui249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_imgproc249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_legacy249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_ml249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_nonfree249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_objdetect249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_photo249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_stitching249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_video249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\OpenCV\x86\opencv_videostab249.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Dependencies\OpenCV\x86\cublas32_55.dll" />
+    <Content Include="Dependencies\OpenCV\x86\cudart32_55.dll" />
+    <Content Include="Dependencies\OpenCV\x86\cufft32_55.dll" />
+    <Content Include="Dependencies\OpenCV\x86\nppc32_55.dll" />
+    <Content Include="Dependencies\OpenCV\x86\nppi32_55.dll" />
+    <Content Include="Dependencies\OpenCV\x86\npps32_55.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_bioinspired290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_calib3d290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_contrib290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_core290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_cudev290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_features2d290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_ffmpeg290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_flann290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_gpu290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_gpuarithm290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_gpubgsegm290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_gpucodec290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_gpufeatures2d290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_gpufilters290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_gpuimgproc290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_gpulegacy290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_gpuoptflow290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_gpustereo290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_gpuwarping290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_highgui290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_imgproc290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_legacy290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_ml290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_nonfree290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_objdetect290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_ocl290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_optim290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_photo290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_softcascade290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_stitching290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_superres290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_video290.dll" />
+    <Content Include="Dependencies\OpenCV\x86\opencv_videostab290.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dependencies\OpenCV\x64\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
