@@ -16,8 +16,8 @@ sampler Samp = sampler_state    //sampler for doing the texture-lookup
 {
     Texture   = (Tex);          //apply a texture to the sampler
     MipFilter = NONE;         //sampler states
-    MinFilter = POINT;
-    MagFilter = POINT;
+    MinFilter = LINEAR;
+    MagFilter = LINEAR;
 	
 	AddressU = CLAMP;
 	AddressV = CLAMP;
